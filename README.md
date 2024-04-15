@@ -27,33 +27,33 @@ MySQL、SqlServer、Sqlite、Oracle 、 PostgreSQL
 
 ## 目录结构
 
-├─NaiveDev.WebHost
-│ └─Controllers
-├─NaiveDev.Application 
-│ ├─CommandHandlers 
-│ ├─Commands
-│ ├─Dtos
-│ ├─QuerieHandlers
-│ └─Queries
-├─NaiveDev.Domain 
-│ ├─Entities 
-│ └─ValueObjects 
-├─NaiveDev.Infrastructure 
-│ ├─Attributes 
-│ ├─Auth 
-│ ├─Caches 
-│ ├─Commons 
-│ ├─Data 
-│ ├─Entities 
-│ ├─Enums 
-│ ├─Extensions 
-│ ├─Internet 
-│ ├─Jwt 
-│ ├─Middleware 
-│ ├─Persistence 
-│ ├─Service 
-│ └─Tools 
-└─NaiveDev.Shared 
+├─NaiveDev.WebHost  
+│ └─Controllers  
+├─NaiveDev.Application  
+│ ├─CommandHandlers  
+│ ├─Commands  
+│ ├─Dtos  
+│ ├─QuerieHandlers  
+│ └─Queries  
+├─NaiveDev.Domain  
+│ ├─Entities  
+│ └─ValueObjects  
+├─NaiveDev.Infrastructure  
+│ ├─Attributes  
+│ ├─Auth  
+│ ├─Caches  
+│ ├─Commons  
+│ ├─Data  
+│ ├─Entities  
+│ ├─Enums  
+│ ├─Extensions  
+│ ├─Internet  
+│ ├─Jwt  
+│ ├─Middleware  
+│ ├─Persistence  
+│ ├─Service  
+│ └─Tools  
+└─NaiveDev.Shared  
 
 ## 许可
 
