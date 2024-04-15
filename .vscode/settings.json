@@ -1,0 +1,10 @@
+{
+    "files.exclude": {
+        "**/.vs": true,
+        "**/bin": true,
+        "**/obj": true,
+        "**/*.sln": true,
+        "**/*.csproj": true,
+        "**/*.csproj.user": true,
+    },
+}
