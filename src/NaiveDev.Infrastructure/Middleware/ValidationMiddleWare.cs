@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
-
 using NaiveDev.Infrastructure.Commons;
 using NaiveDev.Infrastructure.Tools;
-
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -25,48 +23,64 @@ namespace NaiveDev.Infrastructure.Middleware
         /// <returns>异步操作的任务</returns>
         public async Task Invoke(HttpContext context)
         {
+            // 定义一个变量originalBodyStream来保存原始的响应流，
+            // 这样我们可以在处理完请求之后，如果需要的话，将内存流中的内容复制回原始的响应流中。
+            var originalBodyStream = context.Response.Body;
+
+            // 创建一个新的MemoryStream实例，用于临时存储中间件处理过程中产生的响应体内容。
+            // 这样我们可以在之后检查状态码、处理异常，或者在必要时修改响应内容。
+            var responseBody = new MemoryStream();
+
             try
             {
-                var originalBodyStream = context.Response.Body;
-
-                // 使用内存流临时存储响应体内容，以便后续处理
-                using var responseBody = new MemoryStream();
+                // 使用内存流临时存储响应体内容
                 context.Response.Body = responseBody;
 
                 // 调用下一个中间件或请求处理逻辑
                 await _next(context);
 
                 // 检查响应状态码是否为400（Bad Request）
-                if (context.Response.StatusCode == 400)
+                if (context.Response.StatusCode == StatusCodes.Status400BadRequest)
                 {
-                    // 重置响应流的位置到开始位置，以便读取内容
-                    context.Response.Body.Seek(0, SeekOrigin.Begin);
+                    // 重置响应流位置到开始位置
+                    responseBody.Seek(0, SeekOrigin.Begin);
 
                     // 读取响应体内容
-                    string message = await new StreamReader(context.Response.Body).ReadToEndAsync();
-
-                    // 重置响应流的位置到开始位置，以便后续写入内容
-                    context.Response.Body.Seek(0, SeekOrigin.Begin);
+                    string message = await new StreamReader(responseBody).ReadToEndAsync();
 
                     // 清除现有的响应内容
                     context.Response.Clear();
 
-                    // 设置新的响应状态码和类型
-                    await ContextResponse.ImmediateReturn(context, 400, ConvertJsonFormat(message));
-                }
-                else if (context.Response.StatusCode == 404)
-                {
-                    // 设置新的响应状态码和类型
-                    await ContextResponse.ImmediateReturn(context, 404, "404 not found");
-                }
+                    // 设置新的响应
+                    await ContextResponse.ImmediateReturn(context, StatusCodes.Status400BadRequest, ConvertJsonFormat(message));
 
-                // 将内存流中的响应内容复制回原始响应流
-                context.Response.Body.Seek(0, SeekOrigin.Begin);
-                await responseBody.CopyToAsync(originalBodyStream);
+                    // 立即返回，不再执行后续代码
+                    return;
+                }
             }
             catch (Exception ex)
             {
-                await ContextResponse.ImmediateReturn(context, 500, ex.Message);
+                // 如果发生异常，将异常信息作为500响应返回
+                await ContextResponse.ImmediateReturn(context, StatusCodes.Status500InternalServerError, ex.Message);
+
+                // 立即返回，不再执行后续代码
+                return;
+            }
+            finally
+            {
+                // 只有在没有调用ImmediateReturn时才将响应流重置回原始流
+                if (context.Response.Body != originalBodyStream)
+                {
+                    // 将内存流中的响应内容复制回原始响应流
+                    responseBody.Seek(0, SeekOrigin.Begin);
+                    await responseBody.CopyToAsync(originalBodyStream);
+
+                    // 重置响应流的位置到开始位置
+                    context.Response.Body.Seek(0, SeekOrigin.Begin);
+
+                    // 将响应流重置回原始流
+                    context.Response.Body = originalBodyStream;
+                }
             }
         }
 
