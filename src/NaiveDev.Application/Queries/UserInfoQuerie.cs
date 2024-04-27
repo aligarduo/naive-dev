@@ -1,5 +1,4 @@
 ﻿using MediatR;
-
 using NaiveDev.Application.Dtos;
 using NaiveDev.Infrastructure.Commons;
 

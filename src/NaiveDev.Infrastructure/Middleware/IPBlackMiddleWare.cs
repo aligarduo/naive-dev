@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-
 using NaiveDev.Infrastructure.Commons;
 
 namespace NaiveDev.Infrastructure.Middleware
@@ -7,7 +6,7 @@ namespace NaiveDev.Infrastructure.Middleware
     /// <summary>
     /// IP黑名单中间件，用于拦截黑名单中IP地址的访问请求
     /// </summary>
-    public class IPBlackMiddleWare(RequestDelegate next)
+    public class IPBlackMiddleware(RequestDelegate next)
     {
         /// <summary>
         /// 下一个请求处理委托

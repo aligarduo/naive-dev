@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-
 using NaiveDev.Infrastructure.Commons;
 
 namespace NaiveDev.Infrastructure.Middleware
@@ -7,7 +6,7 @@ namespace NaiveDev.Infrastructure.Middleware
     /// <summary>
     /// IP白名单中间件，用于仅允许白名单中IP地址的访问请求
     /// </summary>  
-    public class IPWhiteMiddleWare(RequestDelegate next)
+    public class IPWhiteMiddleware(RequestDelegate next)
     {
         /// <summary>
         /// 请求处理委托的下一个中间件

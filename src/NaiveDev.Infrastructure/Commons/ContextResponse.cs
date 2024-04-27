@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-
 using NaiveDev.Infrastructure.Tools;
 
 namespace NaiveDev.Infrastructure.Commons

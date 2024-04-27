@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-
 using NaiveDev.Infrastructure.Persistence;
 
 namespace NaiveDev.Infrastructure.Extensions

@@ -6,7 +6,7 @@ namespace NaiveDev.Infrastructure.Internet
     /// <summary>
     /// 定义与外部HTTP服务交互的接口，用于发送GET和POST请求，并返回泛型类型的响应
     /// </summary>
-    public interface IHttpExternalService : IScopeDenpendency
+    public interface IHttpService : IScopeDependency
     {
         /// <summary>
         /// 发送GET请求到指定的URL，并返回泛型类型的响应

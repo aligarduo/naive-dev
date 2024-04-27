@@ -12,7 +12,7 @@ namespace NaiveDev.Infrastructure.Middleware
     /// <summary>
     /// 缓存当前请求的用户信息中间件
     /// </summary>
-    public class AccessorMiddleWare(RequestDelegate next, ICache cache)
+    public class AccessorMiddleware(RequestDelegate next, ICache cache)
     {
         private readonly RequestDelegate _next = next;
         private readonly ICache _cache = cache;

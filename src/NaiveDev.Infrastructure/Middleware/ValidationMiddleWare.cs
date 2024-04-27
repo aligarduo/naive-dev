@@ -9,7 +9,7 @@ namespace NaiveDev.Infrastructure.Middleware
     /// <summary>
     /// 验证中间件类，用于在.NET请求处理管道中执行自定义验证逻辑
     /// </summary>
-    public class ValidationMiddleWare(RequestDelegate next)
+    public class ValidationMiddleware(RequestDelegate next)
     {
         /// <summary>
         /// 请求委托，表示在验证中间件之后的请求处理逻辑

@@ -1,7 +1,5 @@
 ﻿using MediatR;
-
 using Microsoft.Extensions.Logging;
-
 using NaiveDev.Application.Dtos;
 using NaiveDev.Application.Queries;
 using NaiveDev.Domain.Entities;

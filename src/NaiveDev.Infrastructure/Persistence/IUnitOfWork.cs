@@ -8,7 +8,7 @@ namespace NaiveDev.Infrastructure.Persistence
     /// 定义单位工作流接口，用于管理数据库事务的开启、提交、回滚，以及提供数据库客户端实例。  
     /// 该接口继承了ITransitDenpendency接口，可能用于依赖注入或事务管理。  
     /// </summary>
-    public interface IUnitOfWork : ITransitDenpendency
+    public interface IUnitOfWork : ITransientDependency
     {
         /// <summary>
         /// 获取用于数据库操作的SqlSugarClient实例

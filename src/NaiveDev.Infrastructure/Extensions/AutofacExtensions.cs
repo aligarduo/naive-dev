@@ -90,13 +90,13 @@ namespace NaiveDev.Infrastructure.Extensions
         public static void BatchAutowired(this ContainerBuilder builder, Assembly assembly)
         {
             // 定义瞬时生命周期的接口类型。瞬时注入，每次请求都创建一个新的实例
-            var transientType = typeof(ITransitDenpendency);
+            var transientType = typeof(ITransientDependency);
 
             // 定义单例生命周期的接口类型。单例注入，在整个应用程序生命周期中只创建一个实例
-            var singletonType = typeof(ISingletonDenpendency);
+            var singletonType = typeof(ISingletonDependency);
 
             // 定义作用域生命周期的接口类型。作用域注入，每次请求作用域开始时创建一个新的实例，作用域结束时销毁
-            var scopeType = typeof(IScopeDenpendency);
+            var scopeType = typeof(IScopeDependency);
 
             // 批量注册瞬时生命周期的类型
             // 在指定程序集中查找所有满足条件的类型（是类、非抽象、实现了ITransitDenpendency接口），

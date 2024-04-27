@@ -1,8 +1,6 @@
 ﻿using MediatR;
-
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 using NaiveDev.Application.Commands;
 using NaiveDev.Application.Dtos;
 using NaiveDev.Application.Queries;

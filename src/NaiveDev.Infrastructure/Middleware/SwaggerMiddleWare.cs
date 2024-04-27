@@ -1,7 +1,5 @@
 ﻿using IGeekFan.AspNetCore.Knife4jUI;
-
 using Microsoft.AspNetCore.Builder;
-
 using NaiveDev.Infrastructure.Attributes;
 
 namespace NaiveDev.Infrastructure.Middleware
@@ -9,7 +7,7 @@ namespace NaiveDev.Infrastructure.Middleware
     /// <summary>
     /// Swagger中间件扩展类，用于在.NET应用程序中集成Swagger和Knife4UI文档界面
     /// </summary>
-    public static class SwaggerMiddleWare
+    public static class SwaggerMiddleware
     {
         /// <summary>
         /// 扩展方法，用于在应用构建器（IApplicationBuilder）上添加Swagger和Knife4UI中间件

@@ -21,7 +21,7 @@ namespace NaiveDev.Infrastructure.Extensions
         {
             services.AddSwaggerGen(setupAction =>
             {
-                // 获取ApiVersionAttribute枚举的所有版本名称，并为每个版本生成Swagger文档  
+                // 获取ApiVersionAttribute枚举的所有版本名称，并为每个版本生成Swagger文档
                 typeof(ApiVersionAttribute).GetEnumNames().ToList().ForEach(version =>
                 {
                     setupAction.SwaggerDoc(version, new OpenApiInfo
@@ -77,14 +77,14 @@ namespace NaiveDev.Infrastructure.Extensions
                 // 如果上下文中的类型是枚举类型
                 if (context.Type.IsEnum)
                 {
-                    // 清除现有的枚举值  
+                    // 清除现有的枚举值
                     model.Enum.Clear();
                     // 获取枚举类型的所有名称  
                     Enum.GetNames(context.Type).ToList().ForEach(name =>
                     {
-                        // 将名称解析为枚举值  
+                        // 将名称解析为枚举值
                         Enum @enum = (Enum)Enum.Parse(context.Type, name);
-                        // 将枚举的名称和对应的整数值（转换为long）添加到OpenAPI模式中，并以特定格式显示  
+                        // 将枚举的名称和对应的整数值（转换为long）添加到OpenAPI模式中，并以特定格式显示
                         model.Enum.Add(new OpenApiString($"<br>{name} : {Convert.ToInt64(Enum.Parse(context.Type, name))} "));
                     });
                 }

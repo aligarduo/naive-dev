@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-
 using NaiveDev.Infrastructure.Commons;
-
 using SqlSugar;
 
 namespace NaiveDev.Infrastructure.Middleware
@@ -10,7 +8,7 @@ namespace NaiveDev.Infrastructure.Middleware
     /// <summary>
     /// 事务中间件类，用于在ASP.NET Core请求管道中管理数据库事务
     /// </summary>
-    public static class TransactionMiddleWare
+    public static class TransactionMiddleware
     {
         /// <summary>
         /// 在.NET应用程序的请求管道中添加中间件，用于使用数据库事务包裹整个请求处理过程

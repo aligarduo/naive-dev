@@ -8,7 +8,7 @@ namespace NaiveDev.Infrastructure.Internet
     /// 外部HTTP服务的实现类，用于发送GET和POST请求并返回泛型类型的响应
     /// 使用IHttpClientFactory创建HttpClient实例，以实现HttpClient的复用和管理
     /// </summary>
-    public class HttpExternalService(IHttpClientFactory httpClientFactory) : ServiceBase, IHttpExternalService
+    public class HttpService(IHttpClientFactory httpClientFactory) : ServiceBase, IHttpService
     {
         private readonly IHttpClientFactory _httpClientFactory = httpClientFactory;
 

@@ -1,5 +1,4 @@
 ﻿using NaiveDev.Infrastructure.Service;
-
 using SqlSugar;
 
 namespace NaiveDev.Infrastructure.Persistence

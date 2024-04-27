@@ -1,11 +1,9 @@
 ﻿using CSRedis;
-
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Redis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using NaiveDev.Infrastructure.Caches;
 using NaiveDev.Infrastructure.Data;
 using NaiveDev.Infrastructure.Enums;

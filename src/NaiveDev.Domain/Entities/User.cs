@@ -1,7 +1,6 @@
 ﻿using NaiveDev.Domain.ValueObjects;
 using NaiveDev.Infrastructure.Entities;
 using NaiveDev.Infrastructure.Tools;
-
 using SqlSugar;
 
 namespace NaiveDev.Domain.Entities

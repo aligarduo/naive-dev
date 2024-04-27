@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-
 using NaiveDev.Infrastructure.Caches;
 using NaiveDev.Infrastructure.Commons;
 
@@ -14,7 +13,7 @@ namespace NaiveDev.Infrastructure.Middleware
     /// -如果您的请求频率超过了限制，API将返回状态码429（Too Many Requests）
     /// -当遇到这个错误时，请降低您的请求频率，并在建议的重试间隔后再试
     /// </remarks>
-    public class RateLimitMiddleWare(RequestDelegate next, ICache cache)
+    public class RateLimitMiddleware(RequestDelegate next, ICache cache)
     {
         private readonly RequestDelegate _next = next;
         private readonly ICache _cache = cache;

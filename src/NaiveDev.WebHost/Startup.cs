@@ -102,13 +102,13 @@ namespace NaiveDev.WebHost
             }
 
             // 使用IP黑名单中间件
-            app.UseMiddleware<IPBlackMiddleWare>();
+            app.UseMiddleware<IPBlackMiddleware>();
 
             // 使用IP白名单中间件
-            app.UseMiddleware<IPWhiteMiddleWare>();
+            app.UseMiddleware<IPWhiteMiddleware>();
 
             // 使用限流中间件
-            app.UseMiddleware<RateLimitMiddleWare>();
+            app.UseMiddleware<RateLimitMiddleware>();
 
             // 启用事务中间件
             app.UseTransaction();
@@ -120,10 +120,10 @@ namespace NaiveDev.WebHost
             app.UseAuthorization();
 
             // 使用自定义的Accessor中间件
-            app.UseMiddleware<AccessorMiddleWare>();
+            app.UseMiddleware<AccessorMiddleware>();
 
             // 使用验证中间件
-            app.UseMiddleware<ValidationMiddleWare>();
+            app.UseMiddleware<ValidationMiddleware>();
 
             // 将控制器映射到路由
             app.MapControllers();
