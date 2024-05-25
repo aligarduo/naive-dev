@@ -1,6 +1,7 @@
 ﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.DependencyInjection;
+using NaiveDev.Infrastructure.JsonConverters;
 
 namespace NaiveDev.Infrastructure.Extensions
 {
@@ -22,6 +23,8 @@ namespace NaiveDev.Infrastructure.Extensions
                     options.JsonSerializerOptions.PropertyNamingPolicy = new SnakeCaseNamingPolicy();
                     // 设置JSON序列化时属性名称不区分大小写
                     options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                    // 设置数据脱敏JSON转换器
+                    options.JsonSerializerOptions.Converters.Add(new DataMaskJsonConverter());
                 });
         }
     }

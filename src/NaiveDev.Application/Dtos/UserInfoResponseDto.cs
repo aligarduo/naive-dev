@@ -1,4 +1,6 @@
-﻿namespace NaiveDev.Application.Dtos
+﻿using NaiveDev.Infrastructure.Attributes;
+
+namespace NaiveDev.Application.Dtos
 {
     /// <summary>
     /// 用户信息响应数据传输对象
@@ -13,6 +15,7 @@
         /// <summary>
         /// 用户名
         /// </summary>
+        [DataMask(MaskMethod.Name)]
         public string? Name { get; init; }
     }
 }

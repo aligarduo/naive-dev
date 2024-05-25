@@ -13,7 +13,6 @@ builder.Host.AddAutofac(Assembly.GetExecutingAssembly());
 builder.Host.AddCache();
 
 // 配置日志系统
-builder.Logging.ClearProviders();
 builder.Logging.AddNLog("nlog.config");
 builder.Host.UseNLog();
 
