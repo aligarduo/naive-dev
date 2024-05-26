@@ -30,7 +30,7 @@ namespace NaiveDev.WebHost
         public void ConfigureServices(IServiceCollection services)
         {
             // 从配置文件读取ORM配置并配置到服务中
-            services.Configure<List<OrmConfiguration>>(Configuration.GetSection("ORM"));
+            services.Configure<List<PersistenceConfiguration>>(Configuration.GetSection("Persistence"));
 
             // 从配置文件读取缓存配置并配置到服务中
             services.Configure<CacheConfiguration>(Configuration.GetSection("Cache"));

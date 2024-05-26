@@ -1,14 +1,14 @@
 ﻿namespace NaiveDev.Infrastructure.Data
 {
     /// <summary>
-    /// ORM配置
+    /// Persistence配置
     /// </summary>
-    public class OrmConfiguration
+    public class PersistenceConfiguration
     {
         /// <summary>
-        /// ORM配置
+        /// Persistence配置
         /// </summary>
-        public OrmConfiguration()
+        public PersistenceConfiguration()
         {
             Identity = string.Empty;
             Dbtype = -1;

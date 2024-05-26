@@ -21,7 +21,7 @@ namespace NaiveDev.Infrastructure.Extensions
             services.AddScoped<ISqlSugarClient>(provider =>
             {
                 // 获取ORM配置信息
-                List<OrmConfiguration> Configuration = provider.GetRequiredService<IOptions<List<OrmConfiguration>>>().Value;
+                List<PersistenceConfiguration> Configuration = provider.GetRequiredService<IOptions<List<PersistenceConfiguration>>>().Value;
 
                 // 根据配置信息创建ConnectionConfig列表
                 List<ConnectionConfig> connectionConfigs = Configuration.Select(db => new ConnectionConfig()
@@ -55,7 +55,7 @@ namespace NaiveDev.Infrastructure.Extensions
                 List<ISqlSugarClient> sqlSugarClients = [];
 
                 // 获取ORM配置信息
-                List<OrmConfiguration> Configuration = provider.GetRequiredService<IOptions<List<OrmConfiguration>>>().Value;
+                List<PersistenceConfiguration> Configuration = provider.GetRequiredService<IOptions<List<PersistenceConfiguration>>>().Value;
 
                 // 遍历配置信息，为每个数据库配置创建CustomSqlSugarClient实例并添加到列表中
                 foreach (var configItem in Configuration)
