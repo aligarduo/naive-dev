@@ -29,6 +29,9 @@ namespace NaiveDev.WebHost
         /// <param name="services">服务集</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            // 从配置文件读取公开信息配置并配置到服务中
+            services.Configure<OpenApiInfoConfiguration>(Configuration.GetSection("OpenApiInfo"));
+
             // 从配置文件读取ORM配置并配置到服务中
             services.Configure<List<PersistenceConfiguration>>(Configuration.GetSection("Persistence"));
 

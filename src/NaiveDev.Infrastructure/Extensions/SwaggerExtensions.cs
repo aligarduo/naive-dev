@@ -1,9 +1,11 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 using NaiveDev.Infrastructure.Attributes;
+using NaiveDev.Infrastructure.Data;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace NaiveDev.Infrastructure.Extensions
@@ -19,6 +21,8 @@ namespace NaiveDev.Infrastructure.Extensions
         /// <param name="services">IServiceCollection实例，用于注册服务</param>
         public static void AddSwagger(this IServiceCollection services)
         {
+            OpenApiInfoConfiguration? configuration = services.BuildServiceProvider().GetService<IOptions<OpenApiInfoConfiguration>>()?.Value;
+
             services.AddSwaggerGen(setupAction =>
             {
                 // 获取ApiVersionAttribute枚举的所有版本名称，并为每个版本生成Swagger文档
@@ -26,13 +30,14 @@ namespace NaiveDev.Infrastructure.Extensions
                 {
                     setupAction.SwaggerDoc(version, new OpenApiInfo
                     {
-                        Title = "Naive Dev",
-                        Description = "一个 .NET WebAPI 开发框架。领域驱动，开箱即用。只需要定义 Entitie 与 DTO，就可以快速完成 Restful 风格的 WebAPI 接口开发。",
+                        Title = configuration?.Title ?? string.Empty,
+                        Description = configuration?.Description ?? string.Empty,
                         Version = version,
                         Contact = new OpenApiContact()
                         {
-                            Name = "一起养条鱼吧"
-                        },
+                            Name = configuration?.OpenApiContact?.Name ?? string.Empty,
+                            Email = configuration?.OpenApiContact?.Email ?? string.Empty,
+                        }
                     });
                 });
 
